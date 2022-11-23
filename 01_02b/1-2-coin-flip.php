@@ -13,8 +13,10 @@
 
 <?php
 
-function flip() {
+function flip()
+{
 	// Challenge: define this function
+	return (0 == rand(0, 1)) ? 'T' : 'H';
 }
 
 ?>
