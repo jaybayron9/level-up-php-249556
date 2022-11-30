@@ -1,29 +1,35 @@
 <?php
 
-function encrypt_string( $str ) {
+function encrypt_string($str)
+{
 	// Challenge: define this function
+	return md5($str);
 }
 
-function decrypt_string( $hash ) {
+function decrypt_string($hash)
+{
 	// Challenge: define this function
+	return (md5(encrypt_string($_POST['string'])) == $hash);
 }
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Encrypt / Decrypt</title>
 	<meta name="author" value="Joe Casabona" />
 	<link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 	<main>
-		<?php 
-		if ( isset( $_POST['string'] ) ) {
-			$encrpyted_string = encrypt_string( $_POST['string'] );
-			$decrypted_string = decrypt_string( $encrpyted_string );
-			
-			if ( $decrypted_string === $_POST['string'] ) {
+		<?php
+		if (isset($_POST['string'])) {
+			$encrpyted_string = encrypt_string($_POST['string']);
+			$decrypted_string = decrypt_string($encrpyted_string);
+
+			if ($decrypted_string === $_POST['string']) {
 				echo "<h3>You successfully encrypted and decrypted $decrypted_string</h3>";
 			}
 		}
@@ -34,7 +40,8 @@ function decrypt_string( $hash ) {
 				<input type="text" name="string" placeholder="Keep it Secret, Keep it Safe" />
 			</div>
 			<div><input type="submit" name="submit" value="Encrypt" /></div>
-		</form>	
+		</form>
 	</main>
 </body>
+
 </html>

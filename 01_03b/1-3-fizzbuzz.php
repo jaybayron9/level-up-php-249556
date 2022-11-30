@@ -1,6 +1,6 @@
 <?php
-
-while ($i = 1 <= 100) {
+$i = 1;
+while (100 >= $i) {
   if (0 == $i % 15) {
     echo 'FizzBuzz';
   } else if (0 == $i % 3) {

@@ -1,35 +1,48 @@
 <?php
 
-class Person {
+class Person
+{
 	private $name;
 	private $dob;
-	
-	function __construct($name, $dob) {
+
+	function __construct($name, $dob)
+	{
 		$this->name = $name;
-		$this->dob = $dob;	
+		$this->dob = $dob;
 	}
-	
-	public function get_name() {
+
+	public function get_name()
+	{
 		return $this->name;
 	}
-	
-	public function get_dob() {
+
+	public function get_dob()
+	{
 		return $this->dob;
 	}
-	
-	public function get_age() {
+
+	public function get_age()
+	{
 		//Calculate age
 		$dob = new Datetime($this->dob);
 		$today = new Datetime(date('Y-m-d'));
 		$age = $today->diff($dob);
-		
+
 		//Return Age in Years
 		return $age->y;
 	}
 }
 
-function compare_ages( $p1, $p2) {
+function compare_ages($p1, $p2)
+{
+	$p1->get_age();
 	// Challenge: define this function
+	if ($p1->get_age() < $p2->get_age()) {
+		return $p1->get_name() . " is older than " . $p2->get_name();
+	} else if ($p1->get_age() > $p2->get_age()) {
+		return $p2->get_name() . " is older than " . $p1->get_name();
+	} else if ($p1->get_age() == $p2->get_age())
+		return $p2->get_name() . ' and ' . $p2->get_name() . 'Person are the same age.';
 }
 
 
@@ -42,7 +55,7 @@ $lou = new Person('Lou', '2020-07-12');
 $rob = new Person('Rob', '1990-12-16');
 $louis = new Person('Louis', '1952-05-20');
 $marie = new Person('Marie', '1956-05-25');
-$rose = new Person( 'Rose', '1985-10-20' );
+$rose = new Person('Rose', '1985-10-20');
 
 echo compare_ages($joe, $erin) . '<br/>';
 echo compare_ages($joe, $rose) . '<br/>';
